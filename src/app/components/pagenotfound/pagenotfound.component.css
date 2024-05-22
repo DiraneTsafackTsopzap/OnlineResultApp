@@ -1,0 +1,22 @@
+/* pagenotfound.component.css */
+
+.error-container {
+    text-align: center; /* Centre le contenu horizontalement */
+    margin-top: 100px; /* Espace au-dessus du contenu */
+    font-size: 36px; /* Taille du texte en gros caractères */
+  }
+  
+  .error-container h1 {
+    font-size: 100px; /* Taille du titre en caractères encore plus gros */
+  }
+  
+  .error-container a {
+    font-size: 24px; /* Taille du lien */
+    text-decoration: none; /* Supprime la décoration de lien */
+    color: #007bff; /* Couleur du lien (bleu par défaut) */
+  }
+  
+  .error-container a:hover {
+    text-decoration: underline; /* Souligne le lien au survol */
+  }
+  

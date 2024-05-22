@@ -1,0 +1,112 @@
+<nav   class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">OnlineSchkoolApp</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="!est_connecte"   routerLink="/login">Login</a>
+          </li>
+
+         <!-- <li class="nav-item">
+            <a class="nav-link" *ngIf="!est_connecte"   routerLink="/register">register</a>
+          </li>   -->
+          
+          
+     
+        
+          <li class="nav-item dropdown">
+            <a *ngIf="est_connecte && est_administrateur"  class="nav-link dropdown-toggle" href="#" role="button" 
+            data-bs-toggle="dropdown" aria-expanded="false">
+              Lehrer
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="AddLehrer">AddLehrer</a></li>
+              <li><a class="dropdown-item" routerLink="ListLehrer">ListLehrer</a></li>
+              
+            </ul>
+          </li>
+
+           <li class="nav-item dropdown">
+            <a  *ngIf="est_connecte && est_administrateur"    class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              KlassenRaum
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="AddKlassenRaum">AddKlassenRaum</a></li>
+              <li><a class="dropdown-item" routerLink="ListKlassenRaum">ListKlassenRaum</a></li>
+              
+            </ul>
+          </li> 
+
+           <li class="nav-item dropdown">
+            <a  *ngIf="est_connecte && est_administrateur"  
+            class="nav-link dropdown-toggle" href="#" role="button" 
+            data-bs-toggle="dropdown" aria-expanded="false">
+              Schüler
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="AddSchuler">AddSchuler</a></li>
+              <li><a class="dropdown-item" routerLink="ListSchuler">ListSchuler</a></li>
+              
+            </ul>
+          </li> 
+
+
+
+
+
+
+          <li class="nav-item dropdown">
+            <a  *ngIf="est_connecte && est_administrateur"  class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Fach
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="AddSubject">AddFach</a></li>
+              <li><a class="dropdown-item" routerLink="ListSubject">ListFachern</a></li>
+              
+            </ul>
+          </li> 
+
+          <li class="nav-item dropdown">
+            <a  *ngIf="est_connecte && est_administrateur"    class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Punkte
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="AddNote">Addnote</a></li>
+              <li><a class="dropdown-item" routerLink="ViewNote">Viewnote</a></li>
+          
+              
+            </ul>
+            <li class="nav-item">
+              <a *ngIf="est_connecte && est_administrateur"  class="nav-link" routerLink="Zeugnis">Zeugnis</a>
+            </li>
+          
+
+
+
+           <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a style="cursor:pointer" *ngIf="est_connecte"
+                    class="nav-link text-danger">{{email}}</a>
+            </li>
+        </ul>
+
+
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a style="cursor:pointer" *ngIf="est_connecte" (click)="onclicklogout()"
+                    class="nav-link text-danger">LogOut</a>
+            </li>
+        </ul>  
+
+
+         
+        </ul>
+  
+      </div>
+    </div>
+  </nav>
+
+ 

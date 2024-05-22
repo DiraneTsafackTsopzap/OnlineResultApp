@@ -1,0 +1,65 @@
+<div class="container py-5">
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">SubjectListes</h1>
+        <hr class="mt-0 mb-5 bg-dark">
+     </div> 
+
+  
+
+    <div class="row">
+        
+
+    
+        <div class="col shadow">
+              
+            <table class="table table-responsive table-striped">
+                <thead>
+                  <tr>
+                
+                    <th>SubjectName</th>
+                    <th>SubjectCode</th>
+                    <th>Klassenraum</th>
+                 
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let subject of Subject; let i = index">
+                   
+                    <td>{{subject.data.SubjectName}}</td>
+                   
+                    <td>{{subject.data.SubjectCode}}</td>
+                    <td>{{subject.data.KlassenRaum.KlassenRaumName}}</td>
+                
+                      
+    
+                    <td>
+                        
+                        <button (click)="DeleteSubject( subject.id)" class="btn btn-danger m-2" >Delete</button>
+                     
+                    </td> 
+                    
+                  </tr>
+               
+                 
+                </tbody>
+             
+              </table>
+            <!-- //  <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+    
+          </div>
+
+
+    </div>
+
+
+
+
+
+
+
+</div> 
+   
+ 
+       
+

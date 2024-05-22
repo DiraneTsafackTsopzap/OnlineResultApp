@@ -1,0 +1,122 @@
+<div class="container py-5">
+
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">Neue Schuler/in hinzüfugen</h1>
+        <hr class="mt-0 mb-5 bg-dark">
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+
+    <div class="row">
+        <div class="col shadow bg-light">
+            <form [formGroup]="AddSchulerForm" (ngSubmit)="AddNeuSchuler()"  >
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Name des Schülers</label>
+                            <input type="email" formControlName="Name"  class="form-control">
+                          
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Vorname</label>
+                            <input formControlName="VorName" type="text" 
+                            class="form-control">
+                          
+                        
+                        </div>
+                    </div>
+                   
+                   
+
+                   
+                </div>
+         
+
+
+
+
+                <div class="row">
+                   
+                   
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">EmailEltern</label>
+                            <input formControlName="EmailEltern" type="text" class="form-control">
+                          
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">KlassenRaum</label>
+                          <select formControlName="KlassenRaum" class="form-select" required>
+                            <option value="" selected>Auswählen</option>
+                            <option value="{{lehrer.id}}-{{lehrer.data.KlassenRaum}}"
+                          
+                             *ngFor="let lehrer of KlassenRaum">{{lehrer.data.KlassenRaum}}</option>
+                          </select>
+                          <div *ngIf="KlassenRaum_.invalid && (KlassenRaum_.dirty || KlassenRaum_.touched)" class="alert alert-danger">
+                            <div *ngIf="KlassenRaum_.errors?.['required']">
+                              Bitte wählen Sie einen Lehrer aus!
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Bild</label>
+                            <input  placeholder="Bitte Image in jpg" 
+                            formControlName="Bild" type="text"
+                            class="form-control"
+                                >
+
+                                <div *ngIf="Bild_.invalid && (Bild_.dirty || Bild_.touched)"
+                                class="alert alert-danger">
+
+                                   <div *ngIf="Bild_.errors?.['required']">
+                                       Bitte UrlImage Eingeben !!!!!!!!!
+                                   </div>
+                                   <div *ngIf="Bild_.errors?.['pattern']">
+                                       Bitte wählen Sie ein JPEG-Bild aus!
+                                     </div>
+                               </div>
+                    
+                        </div>
+                    </div>
+                </div>
+
+             
+
+
+
+
+
+
+                <div class="row">
+                    <div class="col-6">
+                        <button type="submit"
+                            class="btn btn-primary m-2">Speichern</button>
+                    </div>
+                </div>
+                
+
+
+
+            </form>
+
+        </div>
+
+
+
+
+
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container shadow py-3">
+
+    <div class="row" >
+       
+            <h1 class="display-4 mt-5 mb-0" >Zeugnis für Schuler generieren</h1>
+            <hr class="mt-0 mb-5 bg-dark">
+       
+       
+     
+    
+        
+    </div>
+    
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Select a KlassenRaum</label>
+          <select  [(ngModel)]="selectedItem"  (change)="SelectKlassenRaum($event)"  class="form-select" required>
+            <option value="" selected>Auswählen</option>
+            <option value="{{raum.id}}" *ngFor="let raum of KlassenRaum">{{raum.data.KlassenRaum}}</option>
+          </select>
+         
+        </div>
+    </div>
+
+    <div class="col-4">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Select a Schüler</label>
+      <select  [(ngModel)]="selectedItem"  (change)="SelectStudent($event)"  class="form-select" required>
+        <option value="" selected>Auswählen</option>
+        <option value="{{student.id}}-{{student.data.Name}}" *ngFor="let student of Students">{{student.data.Name}}</option>
+      </select>
+     
+    </div>
+    </div>
+
+    <div class="col-4">
+  
+      <div class="col-6">
+        <button [disabled]="!selectedItem" (click)="generatepdf()" class="btn btn-primary">HerunterLaden</button>
+    </div> 
+    </div>
+
+    </div>
+
+  </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+    
+

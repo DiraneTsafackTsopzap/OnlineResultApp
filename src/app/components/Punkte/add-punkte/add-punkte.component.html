@@ -1,0 +1,205 @@
+<div class="container shadow py-3">
+
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">Note hinzufügen</h1>
+        <hr class="mt-0 mb-5 bg-dark">
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+
+    <div class="row">
+        <div class="col bg-light">
+            
+                <div class="row">
+                 
+                    <div class="col-4">
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">KlassenRaum</label>
+                          <select [(ngModel)]="selectedklassenraum" 
+                          (ngModelChange)="KlassenRaumBool = selectedklassenraum !== null"
+                           (change)="on_change_klassen_raum($event)"   class="form-select" required>
+                            <option value="" selected>Auswählen</option>
+                            <option value="{{klasse.id}}-
+                            {{klasse.data.KlassenRaum}}-
+                            {{klasse.data.Lehrer.Email}}-
+                            {{klasse.data.Lehrer.LehrerName}}-
+                            {{klasse.data.Lehrer.TelephonNummer}}-
+                            {{klasse.data.LehrerId}}-
+                            {{klasse.data.Lehrer.Bild}}
+                            
+                            
+                            
+                            
+                            "
+                          
+                             *ngFor="let klasse of KlassenRaum">{{klasse.data.KlassenRaum}}</option>
+                          </select>
+
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Periode</label>
+                            <select [(ngModel)]="selectedPeriode" 
+                            (ngModelChange)="PeriodeBool = selectedPeriode !== null"
+                             (change)="on_change_periode($event)"   class="form-select" required>
+                                <option value="" selected>Auswählen</option>
+                                <option *ngFor="let periode of periodes" [value]="periode">{{ periode }}</option>
+                              </select>
+                          
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Fach</label>
+                            <select [(ngModel)]="selectedMatiere" 
+                            (ngModelChange)="SubjectBool = selectedMatiere !== null"
+                             (change)="on_change_subject($event)" class="form-select" required>
+                                <option value="" selected>Auswählen</option>
+                                <option value="{{subject.id}}-
+                                {{subject.data.SubjectName}}-{{subject.data.SubjectCode}}
+                                
+                                
+                                "
+                              
+                                 *ngFor="let subject of Subject">{{subject.data.SubjectCode}}</option>
+                              </select>
+                          
+                        
+                        </div>
+                    </div>
+                   
+                   
+
+                   
+                </div>
+         
+
+                <div class="row">
+                    <div class="col-6">
+                        <button [disabled]="!(selectedklassenraum && selectedPeriode && selectedMatiere)"
+                         type="submit" (click)="DeroulerListe()"
+                            class="btn btn-primary m-2">StudentListes</button>
+                    </div>
+                </div>
+                
+
+
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+    <hr class="mt-0 mb-5 bg-dark">
+
+    <div class="row">
+        
+
+    
+        <div class="col ">
+              
+            <table class="table table-responsive table-striped">
+                <thead>
+                  <tr>
+                
+                    <th>Name</th>
+                    
+                    <th>MatrikulNummer</th>
+                    <th>Bild</th>
+                    
+                  
+                    <th>{{this.periode}}</th>
+                    <th>Kommentar</th>
+                   
+                   
+                </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let lehrer of Schuler; let i = index">
+                   
+                    <td>{{lehrer.data.Name}}</td>
+                    
+                    <td>{{lehrer.data.MatrikulNummer}}</td>
+                    <td>
+                        <img src="{{lehrer.data.Bild}}" width="75" height="75">
+                    </td>
+                    
+                    <td>
+                        <input min="0" [(ngModel)]="lehrer.data.Note_1" 
+                        placeholder="Note eingeben" type="number">
+                    </td>
+
+                    <td>
+                        <input min="0" [(ngModel)]="lehrer.data.Appreciation" 
+                        placeholder="Kommentar hinzüfugen" type="text">
+                    </td>
+                   
+              
+
+                    <!-- [(ngModel)]="notes[i]" -->
+                    <td class="mb-3">
+                        <button data-bs-target="#MeinModal" 
+                         data-bs-toggle="modal"
+                         (click)="Etape_One(lehrer.id,lehrer)" 
+                        
+                        class="btn btn-info mb-3">Add</button>
+                        &nbsp;
+                      
+                    </td>
+                    <!-- <td>
+                        
+                        <button data-bs-target="#MeinModal" 
+                        data-bs-toggle="modal"
+                        (click)="Etape_One(lehrer.id,lehrer)"
+                        class="btn btn-info m-2" >Delete</button>
+                     
+                    </td>  -->
+                      
+    
+                  
+                    
+                  </tr>
+               
+                 
+                </tbody>
+             
+              </table>
+            <!-- //  <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+    
+          </div>
+
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="MeinModal" tabindex="-1" 
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Bitte geben ein Passwort ein</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="password" class="form-control" [(ngModel)]="password" placeholder="Mot de passe">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
+        <button type="button" data-bs-dismiss="modal" [disabled]="!password || password.trim().length === 0" 
+        (click)="addnote(id_document,lehrer_data)" class="btn btn-danger">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

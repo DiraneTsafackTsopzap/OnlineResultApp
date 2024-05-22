@@ -1,0 +1,121 @@
+<div class="container shadow py-5">
+
+
+  <div class="row">
+
+
+   
+
+
+    <div class="col-9">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Select a Klassenraum</label>
+        <select (change)="onChange($event)" class="form-select" required>
+          <option value="" selected>Auswählen</option>
+          <option value="{{lehrer.id}}-{{lehrer.data.KlassenRaum}}" *ngFor="let lehrer of KlassenRaumArray">
+            {{lehrer.data.KlassenRaum}}</option>
+        </select>
+
+      </div>
+    </div>
+    <!-- <div class="col-3">
+      <button (click)="Gotoreport()" class="btn btn-primary">Report drücken</button>
+
+
+    </div> -->
+  </div>
+
+
+
+
+  <div class="row">
+    &nbsp;
+    <h1 class="display-5 mt-5 mb-0">Kommentar hinzüfugen</h1>
+    <hr class="mt-0 mb-5 bg-dark">
+  </div>
+
+
+
+
+
+  <div class="row">
+
+
+
+    <div class="col ">
+
+      <table class="table table-responsive table-striped">
+        <thead>
+          <tr>
+
+
+            <th>Name</th>
+
+            <th>Gesamte Note</th>
+            <th>Rang</th>
+            <th>TeacherKommentar</th>
+            <th>KommentarPrincipal</th>
+            <th>Zugelassen</th>
+            <th>NeuesSchulJahr/th>
+            <th>BeginnEinschreibung</th>
+
+
+
+
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let note of Kommentar; let i = index">
+
+
+            <td>{{note.data.SchulerName}}</td>
+
+            <td>{{note.data.GesamteNote}}</td>
+            <td>{{note.Rang}} / {{AnzahlSchuler}}</td>
+
+
+            <td>
+              <input min="0" placeholder="Add Teacher Kommentar" [(ngModel)]="note.data.KommentarProfessor" type="text">
+            </td>
+            <td>
+              <input min="0" placeholder="Add Principal Kommentar" [(ngModel)]="note.data.KommentarPrincipal"
+                type="text">
+            </td>
+            <td>
+              <input min="0" placeholder="Zugelassen (ja/nein) / Raum ? " [(ngModel)]="note.data.Entscheidung"
+                type="text">
+            </td>
+            <td>
+              <input min="0" placeholder="neues SchulJahr " [(ngModel)]="note.data.NeuesSchulJahr" type="date">
+            </td>
+            <td>
+              <input min="0" placeholder="BeginnEinschreibung " [(ngModel)]="note.data.BeginnEinschreibung" type="date">
+            </td>
+
+
+
+            <!-- [(ngModel)]="notes[i]" -->
+            <td class="mb-3">
+              <button (click)="UpdateKommentar(note.id,note)" class="btn btn-info mb-3">Add Kommentar</button>
+              &nbsp;
+
+            </td>
+
+
+
+
+          </tr>
+
+
+        </tbody>
+
+      </table>
+      <!-- //  <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+
+    </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,121 @@
+
+
+
+
+ <div class="container py-5">
+
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">Neue Lehrer/in hinzüfugen</h1>
+        <hr class="mt-0 mb-5 bg-dark">
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+
+    <div class="row">
+        <div class="col shadow bg-light">
+            <form [formGroup]="AddLehrerForm" (ngSubmit)="AddNeuLehrer()"  >
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">LehrerName</label>
+                            <input type="email" formControlName="LehrerName"  class="form-control">
+                            <div *ngIf="Lehrer_.invalid && (Lehrer_.dirty || Lehrer_.touched)"
+                                class="alert alert-danger">
+
+                                <div *ngIf="Lehrer_.errors?.['required']">
+                                    Bitte LehrerName Eingeben !!!!!!!!!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Phone</label>
+                            <input formControlName="TelephonNummer" type="number" 
+                            class="form-control">
+                            <div *ngIf="PhoneNummer_.invalid && (PhoneNummer_.dirty || PhoneNummer_.touched)"
+                            class="alert alert-danger">
+
+                            <div *ngIf="PhoneNummer_.errors?.['required']">
+                                Bitte Phonenummer (Ziffern) Eingeben !!!!!!!!!
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                   
+
+                   
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Bild</label>
+                            <input formControlName="Bild" placeholder="Bitte Image in jpg" formControlName="Bild" type="text" formControlName="Bild" class="form-control"
+                                id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                                <div *ngIf="Bild_.invalid && (Bild_.dirty || Bild_.touched)"
+                                 class="alert alert-danger">
+
+                                    <div *ngIf="Bild_.errors?.['required']">
+                                        Bitte UrlImage Eingeben !!!!!!!!!
+                                    </div>
+                                    <div *ngIf="Bild_.errors?.['pattern']">
+                                        Bitte wählen Sie ein JPEG-Bild aus!
+                                      </div>
+                                </div>
+                     
+
+
+                        </div>
+                    </div>
+                   
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input formControlName="Email" type="email" class="form-control">
+                            <div *ngIf="Email_.invalid && (Email_.dirty || Email_.touched)"
+                                class="alert alert-danger">
+
+                                <div *ngIf="Email_.errors?.['required']">
+                                    Bitte LehrerName Eingeben !!!!!!!!!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+           
+
+
+
+
+
+
+                <div class="row">
+                    <div class="col-6">
+                        <button type="submit"
+                            class="btn btn-primary m-2">Speichern</button>
+                    </div>
+                </div>
+                
+
+
+
+            </form>
+
+        </div>
+
+
+
+
+
+    </div>
+</div> 

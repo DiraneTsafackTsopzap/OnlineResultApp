@@ -1,0 +1,255 @@
+<div class="container shadow py-5">
+
+    <div class="row">
+
+         <div class="col">
+            <h1 class="display-5 mt-5 mb-0">Übersicht über die Noten eines Schülers</h1>
+            
+        </div>
+   
+
+   
+   
+
+
+
+
+
+
+
+
+
+       
+    </div>
+
+    <hr class="mt-0 mb-5 bg-dark">
+
+
+    <div class="row">
+
+
+    
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Select a KlassenRaum</label>
+          <select (change)="onChangeKlassenraum($event)"  class="form-select" required>
+            <option value="" selected>Auswählen</option>
+            <option value="{{raum.id}}-{{raum.data.KlassenRaum}}"
+          
+             *ngFor="let raum of KlassenRaum">{{raum.data.KlassenRaum}}</option>
+          </select>
+       
+        </div>
+      </div>
+
+     
+    
+        <div class="col-6">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Select a Schüler</label>
+            <select  (change)="onChange($event)"  class="form-select" required>
+              <option value="" selected>Auswählen</option>
+              <option value="{{Student.id}}-{{Student.data.Name}}" *ngFor="let Student of StudentArray">{{Student.data.Name}}</option>
+            </select>
+           
+          </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+
+ 
+
+   
+
+    <div class="row">
+        
+<div class="col-6">
+    <div class="col ">
+              
+        <table class="table table-responsive table-striped">
+            <thead>
+              <tr>
+            
+                
+                <th>SubjectName</th>
+                <th>Periode</th>
+                <th>Note</th>
+             
+            
+               
+               
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let note of NotesPeriodeOne; let i = index">
+               
+                
+                <td>{{note.MatiereName}}</td>
+                <td>{{note.Periode}}</td>
+               
+              
+                
+                
+                 <td>
+                    <input min="0" [(ngModel)]="note.Note" 
+                    placeholder="note" type="number">
+                </td> 
+          
+
+                <!-- [(ngModel)]="notes[i]" -->
+                <td>
+                    <button (click)="UpdateNote(note.id , note)"  class="btn btn-info m-2" 
+                    >U</button>
+      
+                    <button (click)="DeleteNote(note.id)" class="btn btn-warning m-2">D</button>
+             
+                </td>
+              
+                  
+
+              
+                
+              </tr>
+              <tr>
+                <th scope="row">Gesamtsumme : </th>
+                <td colspan="2"></td>
+                <td>{{SommeperiodeOne}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Durchschnitt : </th>
+                <td colspan="2"></td>
+                <td>{{AverageperiodeOne}}</td>
+              </tr>
+           
+             
+            </tbody>
+         
+          </table>
+    
+
+    </div>
+</div>
+
+<div class="col-6">
+    <div class="col ">
+              
+        <table class="table table-responsive table-striped">
+            <thead>
+              <tr>
+            
+                
+                <th>SubjectName</th>
+                <th>Periode</th>
+                <th>Note</th>
+             
+            
+               
+               
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let note of NotesPeriodeTwo; let i = index">
+               
+                
+                <td>{{note.MatiereName}}</td>
+                <td>{{note.Periode}}</td>
+              
+              
+                
+                
+                <!-- <td>
+                    <input min="0" [(ngModel)]="lehrer.data.Note_1" 
+                    placeholder="note" type="number">
+                </td> -->
+          
+
+                <!-- [(ngModel)]="notes[i]" -->
+                <td>
+                    <input min="0" [(ngModel)]="note.Note" 
+                    placeholder="note" type="number">
+                </td> 
+          
+
+                <!-- [(ngModel)]="notes[i]" -->
+                <td>
+                    <button (click)="UpdateNote(note.id , note)"  class="btn btn-info m-2" 
+                    >U</button>
+      
+                    <button (click)="DeleteNote(note.id)" class="btn btn-warning m-2">D</button>
+             
+                  </td>
+
+              
+                
+              </tr>
+              <tr>
+                <th scope="row">Gesamtsumme : </th>
+                <td colspan="2"></td>
+                <td>{{SommeperiodeTwo}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Durchschnitt : </th>
+                <td colspan="2"></td>
+                <td>{{AverageperiodeTwo}}</td>
+              </tr>
+           
+             
+            </tbody>
+         
+        </table>
+      
+
+    </div>
+</div>
+    
+        
+
+
+    </div>
+
+    <div class="row">
+        <table class="table">
+            <thead>
+              
+            </thead>
+            <tbody>
+           
+           
+              <tr>
+                <th scope="row">Gesamtesumme aller Noten </th>
+                <td colspan="2"></td>
+                <td>{{calculateTotalSum()}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+              
+            </thead>
+            <tbody>
+           
+           
+              <tr>
+                <th scope="row">Durchschnitt </th>
+                <td colspan="2"></td>
+                <td>{{calculateTotalAverage()}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="col-9">
+            <button (click)="AddKommentar()"   class="btn btn-info mb-3"> Kommentar hinzüfugen </button>
+            
+        </div>
+    </div>
+</div>
+
+
+

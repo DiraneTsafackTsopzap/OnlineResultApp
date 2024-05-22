@@ -1,0 +1,84 @@
+<div class="container py-5">
+
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">Neue KlassenRaum hinzüfugen</h1>
+        <hr class="mt-0 mb-5 bg-dark">
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+
+    <div class="row">
+        <div class="col shadow bg-light">
+            <form [formGroup]="AddKlassenRaumForm" (ngSubmit)="AddNeuKlassenRaum()"  >
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">KlassenName</label>
+                            <input type="email" formControlName="KlassenName"  
+                            class="form-control">
+                            <div *ngIf="KlassenRaum_.invalid && (KlassenRaum_.dirty || KlassenRaum_.touched)"
+                            class="alert alert-danger">
+
+                            <div *ngIf="KlassenRaum_.errors?.['required']">
+                                Bitte KlassenRaum Eingeben !!!!!!!!!
+                            </div>
+                        </div>
+                          
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Lehrer</label>
+                          <select formControlName="Lehrer" class="form-select" required>
+                            <option value="" selected>Auswählen</option>
+                            <option value="{{lehrer.id}}-{{lehrer.data.LehrerName}}-
+                            {{lehrer.data.Email}}-{{lehrer.data.TelephonNummer}}-
+                            {{lehrer.data.Bild}}" *ngFor="let lehrer of Lehrer">{{lehrer.data.LehrerName}}</option>
+                          </select>
+                          <div *ngIf="Lehrer_.invalid && (Lehrer_.dirty || Lehrer_.touched)" class="alert alert-danger">
+                            <div *ngIf="Lehrer_.errors?.['required']">
+                              Bitte wählen Sie einen Lehrer aus!
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                   
+
+                   
+                </div>
+
+
+
+
+
+           
+
+
+
+
+
+
+                <div class="row">
+                    <div class="col-6">
+                        <button type="submit"
+                            class="btn btn-primary m-2">Speichern</button>
+                    </div>
+                </div>
+                
+
+
+
+            </form>
+
+        </div>
+
+
+
+
+
+    </div>
+</div>
